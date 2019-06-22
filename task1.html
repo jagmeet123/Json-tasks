@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Json to HTML TABLE</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+    
+    <style>
+        .app-title{
+        text-align:center;
+        font-weight:normal;
+        font-size:5.6rem;
+        color:rgb(red, green, blue);
+    }
+
+    .body{
+        font-family: sans-serif;
+        background-color:blue;
+        color:#333;
+        padding:20px 0 28px 0;
+        margin:0
+    }
+
+    .img{
+
+        max-width: 100%;
+        height: auto;
+    }
+
+    .photo{
+        max-width: 650px;
+        padding: 20px;
+        margin:30px auto;
+        background-color: #FFF;
+        overflow: hidden;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, alpha=0.1)
+
+
+    }
+
+
+    .name{
+        font-size: 1rem;
+        font-weight: normal;
+        margin: 0 0 1rem 0;
+
+    }
+
+    .species{
+
+        font-size:5rem;
+        color:chartreuse;
+        vertical-align: middle;
+
+    }
+
+    
+    </style>
+
+</head>
+<body class="bg-primary">
+
+<div class="container">
+    <div id="app">
+
+    </div>
+    
+</div>
+
+
+</br>
+</html>
+
+
+<script>
+    const data=[
+    {
+      "username": "cristiano",
+      "stats": {
+        "followerCount": 155440542,
+        "engagement": {
+          "avgLikesRatio": 0.035254,
+          "avgCommentsRatio": 0.000227
+        },
+        "interests": [
+          "Fitness",
+          "Fashion & accessory",
+          "Sports"
+        ]
+      },
+      "picture": "https://www.google.com/search?biw=1536&bih=722&tbm=isch&sa=1&ei=fkINXf6lF9De9QOHxoSgBg&q=cristiano+ronaldo+instagram+profile+picture&oq=cristiano+ronaldo+inst&gs_l=img.3.2.0l10.2428.3721..5689...0.0..0.176.706.0j5......0....1..gws-wiz-img.......0i67.7AlOawoRbm8#imgrc=pPEuixOQR-ffDM:"
+    },
+    {
+      "username": "selenagomez",
+      "stats": {
+        "followerCount": 146136961,
+        "engagement": {
+          "avgLikesRatio": 0.033608,
+          "avgCommentsRatio": 0.000392
+        },
+        "interests": [
+          "Fashion & accessory",
+          "Beauty",
+          "Lifestyle"
+        ]
+      },
+      "picture": "https://scontent-sjc3-1.cdninstagram.com/vp/0add12d85048a84daf92b301499572f1/5D24D490/t51.2885-19/s150x150/39140818_445602959281673_7253789249969848320_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com"
+    },
+    {
+      "username": "arianagrande",
+      "stats": {
+        "followerCount": 145949707,
+        "engagement": {
+          "avgLikesRatio": 0.012117,
+          "avgCommentsRatio": 0.000096
+        },
+        "interests": [
+          "Photography",
+          "Entertainment",
+          "Fashion & accessory"
+        ]
+      },
+      "picture": "https://instagram.fhel4-1.fna.fbcdn.net/vp/22a10452d3d4bafe32a02da5719e7254/5CF21CD2/t51.2885-19/s150x150/49346906_306327576755687_3483630119606550528_n.jpg?_nc_ht=instagram.fhel4-1.fna.fbcdn.net"
+    },{
+        "username": "therock",
+        "stats": {
+          "followerCount": 132698518,
+          "engagement": {
+            "avgLikesRatio": 0.010023,
+            "avgCommentsRatio": 0.000059
+          },
+          "interests": [
+            "Fitness",
+            "Entertainment",
+            "Food & beverages"
+          ]
+        },
+        "picture": "https://scontent-mad1-1.cdninstagram.com/vp/14c168a9b17520ff110e8220b7356862/5D2663FC/t51.2885-19/11850309_1674349799447611_206178162_a.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com"
+      },
+      {
+        "username": "kimkardashian",
+        "stats": {
+          "followerCount": 128296516,
+          "engagement": {
+            "avgLikesRatio": 0.017005,
+            "avgCommentsRatio": 0.000104
+          },
+          "interests": [
+            "Fashion & accessory",
+            "Beauty",
+            "Lifestyle"
+          ]
+        },
+        "picture": "https://scontent-sjc3-1.cdninstagram.com/vp/c6aeb136bcef499ca480d3506af5b719/5CEA582C/t51.2885-19/s150x150/41326196_329788961105496_8866535953355767808_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com"
+      },
+      {
+        "username": "kyliejenner",
+        "stats": {
+          "followerCount": 127463418,
+          "engagement": {
+            "avgLikesRatio": 0.033074,
+            "avgCommentsRatio": 0.000532
+          },
+          "interests": [
+            "Fashion & accessory",
+            "Beauty",
+            "Lifestyle"
+          ]
+        },
+        "picture": "https://instagram.fhel4-1.fna.fbcdn.net/vp/cef773c1240c65ec0303ac15443a2e4d/5D226F09/t51.2885-19/s150x150/49637385_2000492713584306_1377887545064423424_n.jpg?_nc_ht=instagram.fhel4-1.fna.fbcdn.net"
+      },
+      {
+        "username": "beyonce",
+        "stats": {
+          "followerCount": 124669792,
+          "engagement": {
+            "avgLikesRatio": 0.01937,
+            "avgCommentsRatio": 0.000155
+          },
+          "interests": [
+            "Fashion & accessory",
+            "Lifestyle",
+            "Entertainment"
+          ]
+        },
+        "picture": "https://scontent-mad1-1.cdninstagram.com/vp/23c16cd83891ce10996b7341bc26172c/5CEC5558/t51.2885-19/s150x150/35294447_2180528571961271_4347619716693491712_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com"
+      },
+      {
+        "username": "taylorswift",
+        "stats": {
+          "followerCount": 114225920,
+          "engagement": {
+            "avgLikesRatio": 0.012799,
+            "avgCommentsRatio": 0
+          },
+          "interests": [
+            "Entertainment",
+            "Music",
+            "Fashion & accessory"
+          ]
+        },
+        "picture": "https://scontent-sjc3-1.cdninstagram.com/vp/7ebc4579dc7ae0f2e88461ca4dd446d6/5D2232BF/t51.2885-19/s150x150/20969376_112654676087652_1378856425261891584_a.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com"
+      },
+      {
+        "username": "neymarjr",
+        "stats": {
+          "followerCount": 111424017,
+          "engagement": {
+            "avgLikesRatio": 0.018705,
+            "avgCommentsRatio": 0.000028
+          },
+          "interests": [
+            "Fitness",
+            "Sports",
+            "Fashion & accessory"
+          ]
+        },
+        "picture": "https://scontent-mad1-1.cdninstagram.com/vp/b1d75b900b7265bb44afe4a96327553e/5D0D9172/t51.2885-19/s150x150/46841960_2663903646983935_2436477884085305344_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com"
+      },
+      {
+        "username": "leomessi",
+        "stats": {
+          "followerCount": 109890479,
+          "engagement": {
+            "avgLikesRatio": 0.03347,
+            "avgCommentsRatio": 0.000281
+          },
+          "interests": [
+            "Fashion & accessory",
+            "Parenting",
+            "Fitness"
+          ]
+        },
+        "picture": "https://scontent-sjc3-1.cdninstagram.com/vp/33e4f3760c66c9ec5021d1292f3577c7/5CF224F6/t51.2885-19/s150x150/43818140_2116018831763532_3803033961098117120_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com"
+      },
+      {
+        "username": "justinbieber",
+        "stats": {
+          "followerCount": 104682785,
+          "engagement": {
+            "avgLikesRatio": 0.035794,
+            "avgCommentsRatio": 0.000614
+          },
+          "interests": [
+            "Fashion & accessory",
+            "Entertainment",
+            "Beauty"
+          ]
+        },
+        "picture": "https://scontent-sjc3-1.cdninstagram.com/vp/74fd622e6f1850c12db852b20cb8508b/5D057C38/t51.2885-19/s150x150/20633803_159905257904822_3024096755265306624_a.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com"
+      },
+      {
+        "username": "kendalljenner",
+        "stats": {
+          "followerCount": 104307290,
+          "engagement": {
+            "avgLikesRatio": 0.029395,
+            "avgCommentsRatio": 0.000259
+          },
+          "interests": [
+            "Fashion & accessory",
+            "Lifestyle",
+            "Beauty"
+          ]
+        },
+        "picture": "https://scontent-sjc3-1.cdninstagram.com/vp/e0e4ca46b357d9c19444eac9a2c7598f/5D27D6EB/t51.2885-19/s150x150/49417833_242630136649021_8901904669735911424_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com"
+      },
+      {
+        "username": "nickiminaj",
+        "stats": {
+          "followerCount": 99248074,
+          "engagement": {
+            "avgLikesRatio": 0.009136,
+            "avgCommentsRatio": 0.000119
+          },
+          "interests": [
+            "Fashion & accessory",
+            "Beauty",
+            "Lifestyle"
+          ]
+        },
+        "picture": "https://scontent-mad1-1.cdninstagram.com/vp/8bfb9f9ac6ab88c5d4f9bbfdbef11cc8/5CEFD8B9/t51.2885-19/s150x150/38428857_2268617196485173_7479580993595113472_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com"
+      },
+      {
+        "username": "khloekardashian",
+        "stats": {
+          "followerCount": 87343661,
+          "engagement": {
+            "avgLikesRatio": 0.020072,
+            "avgCommentsRatio": 0.000126
+          },
+          "interests": [
+            "Fashion & accessory",
+            "Beauty",
+            "Parenting"
+          ]
+        },
+        "picture": "https://scontent-mad1-1.cdninstagram.com/vp/2d58e34a77f27e7433aa77450b97fda1/5D01B924/t51.2885-19/s150x150/50898646_253754085571468_3402884395139334144_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com"
+      },
+      {
+        "username": "jlo",
+        "stats": {
+          "followerCount": 86743375,
+          "engagement": {
+            "avgLikesRatio": 0.009473,
+            "avgCommentsRatio": 0.000087
+          },
+          "interests": [
+            "Fashion & accessory",
+            "Beauty",
+            "Entertainment"
+          ]
+        },
+        "picture": "https://scontent-mad1-1.cdninstagram.com/vp/64a7c4125b1d27d75b93c2d7fdd5b868/5CF3C5A2/t51.2885-19/s150x150/31775721_991090314389280_8797532849864441856_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com"
+      },
+      {
+        "username": "katyperry",
+        "stats": {
+          "followerCount": 75672076,
+          "engagement": {
+            "avgLikesRatio": 0.005603,
+            "avgCommentsRatio": 0.000052
+          },
+          "interests": [
+            "Fashion & accessory",
+            "Entertainment",
+            "Arts"
+          ]
+        },
+        "picture": "https://scontent-ams3-1.cdninstagram.com/vp/3090d89d88ff20610194f7ef40fb814d/5CEAF99D/t51.2885-19/s150x150/51337193_2253636841353645_7989066665834840064_n.jpg?_nc_ht=scontent-ams3-1.cdninstagram.com"
+      },
+      {
+        "username": "kourtneykardash",
+        "stats": {
+          "followerCount": 73644797,
+          "engagement": {
+            "avgLikesRatio": 0.022051,
+            "avgCommentsRatio": 0.000135
+          },
+          "interests": [
+            "Fashion & accessory",
+            "Lifestyle",
+            "Beauty"
+          ]
+        },
+        "picture": "https://scontent-mad1-1.cdninstagram.com/vp/f9cf5cdf9d2ac9c1ac3b9a0f0051a488/5D0946C8/t51.2885-19/s150x150/50208980_1128416654003145_565174948344102912_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com"
+      },
+      {
+        "username": "ddlovato",
+        "stats": {
+          "followerCount": 70974503,
+          "engagement": {
+            "avgLikesRatio": 0.02582,
+            "avgCommentsRatio": 0.000268
+          },
+          "interests": [
+            "Fashion & accessory",
+            "Lifestyle",
+            "Beauty"
+          ]
+        },
+        "picture": "https://scontent-mad1-1.cdninstagram.com/vp/a908fcdb4723a2f6b033ef9ef2881f4d/5CEF45F2/t51.2885-19/s150x150/34846546_1709328789163482_247968266092281856_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com"
+      },
+      {
+        "username": "kevinhart4real",
+        "stats": {
+          "followerCount": 70170780,
+          "engagement": {
+            "avgLikesRatio": 0.007777,
+            "avgCommentsRatio": 0.000071
+          },
+          "interests": [
+            "Entertainment",
+            "Fashion & accessory",
+            "Music"
+          ]
+        },
+        "picture": "https://scontent-mad1-1.cdninstagram.com/vp/960e344531b41f5584166ff638dc03dc/5D238488/t51.2885-19/s150x150/14515783_1158525867560668_3834942711954145280_a.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com"
+      }
+];
+
+
+function interests(interest){
+    return `
+    <b><h1>Interests:-</h1></b>
+    <ul>
+        ${interest.map((interest) =>
+            `<li>${interest}</li>`
+        ).join('')}
+    </ul>
+`
+}
+
+
+    document.getElementById("app").innerHTML=`
+    <h1 class="app-title">INFLUENCERS( ${data.length} results)<h1>
+    <hr  style="border: 10px solid green">
+        ${data.map(function(influnc){
+            return `
+            <span class="border border-primary">
+            <div class="text-dark">
+                <p class="name"><span class="species">USERNAME:${influnc.username}</span></p>
+                <p> <strong>Follower-Count:-</strong>${influnc.stats.followerCount}</p>
+                <p><strong>Average Like Ratio:-</strong>${influnc.stats.avgLikesRatio}</p>
+                <p><strong>Average Comments Ratio:-</strong>${influnc.stats.avgCommentsRatio}</p>
+                ${influnc.stats.interests ? interests(influnc.stats.interests):''}
+                Pofile Picture <img src="${influnc.picture} alt="Photo ${influnc.id} class="photo"/>
+
+                <hr style="border:3px solid black">
+             </div>
+             </span>
+             `
+        }).join('')}
+
+    `
+</script>

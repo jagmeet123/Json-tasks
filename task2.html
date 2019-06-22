@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Json to HTML TABLE</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    
+    <style>
+        .app-title{
+        text-align:center;
+        font-weight:normal;
+        font-size:5.6rem;
+        color:rgb(red, green, blue);
+    }
+
+    .body{
+        font-family: sans-serif;
+        background-color:blue;
+        color:#333;
+        padding:20px 0 28px 0;
+        margin:0
+    }
+
+    .img{
+
+        max-width: 100%;
+        height: auto;
+    }
+
+    .photo{
+        max-width: 650px;
+        padding: 20px;
+        margin:30px auto;
+        background-color: #FFF;
+        overflow: hidden;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, alpha=0.1)
+
+
+    }
+
+
+    .name{
+        font-size: 1rem;
+        font-weight: normal;
+        margin: 0 0 1rem 0;
+
+    }
+
+    .species{
+
+        font-size:5rem;
+        color:chartreuse;
+        vertical-align: middle;
+
+    }
+
+    
+    </style>
+
+</head>
+<body class="bg-primary">
+<div class="container" style="padding-top:20px">
+
+    <div id="app">
+            <h1 align="center">INFLUENCERS INFORMATION</h1>
+
+            <button type="button" class="btn btn-info btn-lg btn-block" id="getjson">Get Json (Click On The Button)</button>
+            <div class="output" ></div>
+    </div>
+    
+</div>
+
+
+
+
+
+<script>
+
+document.getElementById("getjson").addEventListener('click',getposts);
+
+
+function interests(interest){
+    return `
+    <b><h1>Interests:-</h1></b>
+    <ul>
+        ${interest.map((interest) =>
+            `<li>${interest}</li>`
+        ).join('')}
+    </ul>
+`
+}
+
+
+
+
+
+
+
+function getposts(){
+    fetch('http://demo4469839.mockable.io/influencers')
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+    let output=`<h2>Influencers</h2>`
+    document.getElementById("app").innerHTML=`
+    <h1 class="app-title">INFLUENCERS( ${data.data.allInfluencers.length} results)<h1>
+    <hr  style="border: 10px solid #000080">
+
+    
+      ${data.data.allInfluencers.forEach(function(influnc){
+           
+           //console.log(influnc.username)
+           //console.log(influnc.stats.followerCount)
+           //console.log(influnc.engagement.avgLikesRatio)
+           //console.log(influnc.engagement.avgCommentsRatio)
+           //console.log(influnc.stats.interests)
+               
+        })
+     
+    }
+        
+    
+    `
+    
+
+        })
+    }
+
+</script>
+
+</body>
+</html>
